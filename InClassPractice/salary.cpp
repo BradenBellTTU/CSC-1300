@@ -11,7 +11,7 @@ int main () {
    cout << endl;
 
    cout << "Monthly salary is: ";
-   cout << ((hourlyWage * 40 * 50) / 1);
+   cout << ((hourlyWage * 40 * 50) / 12);
    cout << endl;
    // FIXME: The above is wrong. Change the 1 so the statement outputs monthly salary.
 
