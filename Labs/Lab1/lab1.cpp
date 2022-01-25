@@ -11,9 +11,12 @@ using namespace std;
 
 int main() {
     double celsius, fahrenheit;
+
     cout << "What is the current temperature in Celsius? ";
     cin >> celsius;
     fahrenheit = ( (9.0/5.0) * celsius + 32);
+
     cout << "RESULT: " << celsius << " degrees Celsius is " << fahrenheit << " degrees Fahrenheit." << endl;
+
     return 0;
 }
