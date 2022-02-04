@@ -1,8 +1,9 @@
 /*
-        Title:          lab_2b.cpp
+        Title:          lab_2c.cpp
         Author:         Braden Bell
-        Date:           2-1-2022
-        Purpose:        This program helps a user at a convience store to buy>
+        Date:           2.4.2022
+        Purpose:        This program takes a student's name and 3 test grades as input, calculates the average
+						of the test grades and then outputs it to the user with their name
 */
 
 #include <iostream>
