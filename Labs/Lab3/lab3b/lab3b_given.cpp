@@ -18,7 +18,7 @@ int main()
 	string original;
 	
 	/* !!!!! ADD THE STATEMENT HERE THAT WILL SEED THE RANDOM NUMBER GENERATOR BASED ON COMPUTER TIME */
-	
+	srand(time(0));
 	
 	cout << "Good afternoon!  Please enter the following information:\n\n";
 	cout << "YOUR NAME:  ";
@@ -42,8 +42,8 @@ int main()
 	
 	/* !!!!! GENERATE A RANDOM NUMBER THAT IS EITHER A 1 OR 2 AND SAVE IN randomNum1 */
 	
-	
-	
+	randomNum1 = (rand() % 2) + 1;
+
 	if (randomNum1 == 1)
 	{
 		original = name +", the moon moves into " + location1 + " today, putting you in a " + adjective1 + " mood. ";
@@ -60,7 +60,8 @@ int main()
 	
 	/* !!!!! GENERATE ANOTHER RANDOM NUMBER BETWEEN 1-100 AND SAVE IN randomNum2 */
 	
-	
+	randomNum2 = (rand() % 100) + 1;
+
 	cout << original;
 	
 	/* !!!!!COMPLETE THE FOLLOWING if/else if/else block so that if randomNum 2 is 
@@ -70,6 +71,17 @@ int main()
 		Otherwise, (randomNum2 is less than 40) it will print out " at the dump.\n\n";
 	*/
 	
+	if (randomNum2 >= 80)
+		cout << " and then you die.\n\n";
+
+	else if (randomNum2 >= 60)
+		cout << " and so does your dog.\n\n";
+	
+	else if (randomNum2 >= 40)
+		cout << " in your car.\n\n";
+	
+	else if (randomNum2 < 40)
+		cout << " at the dump.\n\n";
 	
 	cout << endl;
 	return 0;
