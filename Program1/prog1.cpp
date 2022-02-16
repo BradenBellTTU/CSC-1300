@@ -1,3 +1,12 @@
+/*
+    Title: prog1.cpp
+    Author: Braden Bell
+    Date: Feb 15, 2022
+    Purpose: This is a 12 question personality test designed to gather data from four different aspects of the user's personality
+			 Everything required for program 1 should be covered.
+*/
+
+
 #include <iostream>
 #include <iomanip>
 #include <string>
