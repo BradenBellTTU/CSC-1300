@@ -17,7 +17,7 @@ int main() {
 	do {
 		//Variables
 		int introvert = 0, extrovert = 0, positivity = 0, negativity = 0, silly = 0, serious = 0, spontaneous = 0, planner = 0;
-	    char answer;
+	  char answer;
 
 
 		//Display intro
