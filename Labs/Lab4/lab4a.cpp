@@ -2,7 +2,7 @@
 	Title:  	Lab4a.cpp
 	Author:		Braden Bell
 	Date:		02.20.22
-	Purpose:	Time management and logical operators
+	Purpose:	logical operator practice
 */
 
 #include <iostream>
