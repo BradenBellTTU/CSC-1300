@@ -9,7 +9,7 @@ int main() {
 
     //Variables
     bool playGame;
-    int guess;
+    int guess, guessCount;
 
     //Seed RNG with time
     srand(time(0));
@@ -20,16 +20,31 @@ int main() {
 
 
     do {
-        cout << "Enter your guess: ";
-        cin >> guess;
-        while (cin.fail() || !(guess <= UPPER_LIMIT && guess >= LOWER_LIMIT) ) {
-            cin.clear();
-            cin.ignore(255, '\n');
-            cout << "You entered an invalid number. Choose between " << UPPER_LIMIT << " and " << LOWER_LIMIT "\n";
+        while(guess != randNum) {
+            cout << "Enter your guess: ";
             cin >> guess;
+            while (cin.fail() || !(guess <= UPPER_LIMIT && guess >= LOWER_LIMIT) ) {
+                cin.clear();
+                cin.ignore(255, '\n');
+                cout << "You entered an invalid number. Choose between " << UPPER_LIMIT << " and " << LOWER_LIMIT << "\n";
+                cin >> guess;
+            }
+
+            if (guess > randNum)
+                cout << "Too high\n";
+
+            else if (guess < randNum)
+                cout << "Too low.\n";
+            
+            guessCount++;
         }
 
+        
+        cout << "Would you like to play again? (y/n) ";
+        cin >> playGame;
+
+
     }
-    while(playGame == true);
+    while(playGame == 'y');
 }
 
