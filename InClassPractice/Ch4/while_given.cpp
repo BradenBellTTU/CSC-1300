@@ -2,7 +2,7 @@
 //lab4while.cpp
 //Description : Generate random number between 70 and 770. Calculate sum of random numbers. 
 //              Ask user to guess the random number.
-using namespace std;
+/*using namespace std;
 #include<iostream>
 #include<time.h>
 int main()
@@ -18,21 +18,17 @@ int main()
 	//seed the random number generator
 	srand (time(0));
 	
-	/*
 		!!!!!!!!!!!!!!!!!!!!!!
 		generate a random number between the low & high range inclusively
-	*/
 
 	
-
 	cout << "\n\nGuess a number between " << low << " and " << high << ":  ";
 	cin >> guess;
-	
-	/*
+
 		!!!!!!!!!!!!!!!!!!!!!!!!!
 		Complete the while loop so that it will validate if the user entered 
 		a number in the valid range (7 to 77).  Both 7 & 77 are included in the valid range.
-	*/
+
 	while()
 	{
 		cout << "The number is not in the valid range!\n";
@@ -48,3 +44,4 @@ int main()
 	return 0;
 		
 }
+*/

@@ -5,16 +5,19 @@
 using namespace std;
 
 bool displayMenuGetChoice();
-int randomIntGenerator();
+int randomIntGenerator(int, int);
 
 int main() {
+    //Seed RNG
+    srand(time(0));
 
     //Variables
     bool playGame;
 
     string personOneLike, personTwoLike, personOneHate, locationOneLike, locationTwoLike, locationOneHate, 
     awesomeJobOne, awesomeJobTwo, worstJobOne, companyOneLike, companyTwoLike, companyOneHate, carOneLike, 
-    carTwoLike, carOneHate;
+    carTwoLike, carOneHate, houseType, marriedAdjective, spouseName, numChildren, houseLocation, jobTitle, yearlySalary,
+    carModel;
 
     int numOne, numTwo, numThree, bigNumOne, bigNumTwo, bigNumThree;
 
@@ -122,6 +125,18 @@ int main() {
 
         //TODO: MASH RESULTS
 
+        //Calculate RNG
+
+        //House
+
+
+        //Print results
+        cout << "****** MASH RESULTS ******\n";
+        cout << "You will live in a " << houseType << ".\n";
+        cout << "You will be " << marriedAdjective << " married to " << spouseName << ".\n";
+        cout << "You and your spouse will have " << numChildren << " children.\n";
+        cout << "";
+
     }
     while(playGame);
 }
@@ -157,4 +172,8 @@ bool displayMenuGetChoice() {
             break;
     }
 
+}
+
+int randomIntGenerator(int randLower, int randUpper) {
+     return ((rand() % (randUpper - randLower + 1)) + randLower);
 }
