@@ -26,7 +26,7 @@ int main() {
 
     //Output rows
     for (i = 0; i < rows; i++){
-        for(j = rows; j>i; j--){
+        for(j = rows; j > i; j--){
             cout << ' ';
         }
         for(k = 0; k < (2 * i + 1); k++) {
