@@ -5,6 +5,7 @@
 using namespace std;
 
 bool displayMenuGetChoice();
+int randomIntGenerator();
 
 int main() {
 
