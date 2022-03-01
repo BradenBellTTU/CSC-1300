@@ -319,7 +319,7 @@ int main() {
 }
 
 //Display menu and returns true or false depending on user choice. No inputs.
-bool displayMenuGetChoice() {
+bool DisplayMenuGetChoice() {
     int userInput;
 
     cout << "Pick from the following menu:\n";
@@ -349,10 +349,9 @@ bool displayMenuGetChoice() {
             return false;
             break;
     }
-
 }
 
 //RNG Function. inputs: (lowest number in range, highest number in range)
-int generateRandInt(int randLower, int randUpper) {
+int GenerateRandInt(int randLower, int randUpper) {
      return ((rand() % (randUpper - randLower + 1)) + randLower);
 }
