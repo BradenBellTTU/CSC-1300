@@ -7,8 +7,17 @@ In this function, you should generate a random number
 between 1 and 100.  If the user is within 25 numbers of the 
 generated number, then return true.  Otherwise, return false.*/
 
+/*
+    Title: ch5.cpp
+    Author: Braden Bell
+    Date: 2.28.22
+    Purpose: In class practice for chapter 5
+*/
+
+
 #include <iostream>
 #include <fstream>
+#include <ctime>
 using namespace std;
 
 bool luckyguess(int);
@@ -38,13 +47,20 @@ int main()
 		outFile << name << ", sorry, you get no " << food <<".\n";
 	}
 	outFile.close();
-	
+	cout << "Done." << endl;
 	return 0;
 }
 
 bool luckyguess(int num)
 {
-	bool status;
+	srand(time(0));
+	int randomNum = (rand() % (100 - 1 + 1)) + 1;
+	cout << randomNum << endl;
+	if (num >= (randomNum - 25) && num <= (randomNum + 25) )
+		return true;
+	
+	else
+		return false;
 }
 
 
