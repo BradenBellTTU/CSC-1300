@@ -150,7 +150,7 @@ int main() {
 
                 default:
                     cout << "Error calculating house RNG.\n";
-                    return 0;
+                    return 1;
                     break;
             }
 
@@ -173,7 +173,7 @@ int main() {
                 
                 default:
                     cout << "Error calculating spouse RNG\n";
-                    return 0;
+                    return 1;
                     break;
             }
 
@@ -193,7 +193,7 @@ int main() {
                 
                 default:
                     cout << "Error calculating children RNG.\n";
-                    return 0;
+                    return 1;
                     break;
             }
 
@@ -213,7 +213,7 @@ int main() {
 
                 default:
                     cout << "Error calculating house location RNG\n";
-                    return 0;
+                    return 1;
                     break;
             }
 
@@ -233,7 +233,7 @@ int main() {
                 
                 default:
                     cout << "Error calculating work location.\n";
-                    return 0;
+                    return 1;
                     break;
             }
 
@@ -253,7 +253,7 @@ int main() {
                 
                 default:
                     cout << "Error calculating job title.\n";
-                    return 0;
+                    return 1;
                     break;
             }
 
