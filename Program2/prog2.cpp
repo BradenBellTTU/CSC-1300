@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
 #include <ctime>
 using namespace std;
 
+//Prototype functions
 bool displayMenuGetChoice();
-int randomIntGenerator(int, int);
+int generateRandInt(int, int);
 
 int main() {
     //Seed RNG
@@ -16,18 +16,15 @@ int main() {
 
     string personOneLike, personTwoLike, personOneHate, locationOneLike, locationTwoLike, locationOneHate, 
     awesomeJobOne, awesomeJobTwo, worstJobOne, companyOneLike, companyTwoLike, companyOneHate, carOneLike, 
-    carTwoLike, carOneHate, houseType, marriedAdjective, spouseName, numChildren, houseLocation, jobTitle, yearlySalary,
+    carTwoLike, carOneHate, houseType, marriedAdjective, spouseName, houseLocation, jobLocation, jobTitle,
     carModel;
 
-    int numOne, numTwo, numThree, bigNumOne, bigNumTwo, bigNumThree;
+    int numOne, numTwo, numThree, bigNumOne, bigNumTwo, bigNumThree, numChildren, yearlySalary;
 
-
-    do {
-        playGame = displayMenuGetChoice();
-        if (!playGame)
-            return 0;
+    //MASH game. Only plays if displayMenuGetChoice returns true.
+    while(displayMenuGetChoice()) {
         
-        //Begin questions
+        //**BEGIN QUESTIONS**
 
         //People questions
         cout << "You chose to play MASH!\n\n";
@@ -39,7 +36,7 @@ int main() {
         cout << "\nEnter in a person you hate: ";
         getline(cin, personOneHate);
 
-        //Get three numbers, with input validaiton
+        //Three numbers w/ input validation
         cout << "\nEnter three numbers between 1 and 100, seperated by a space.\n";
         cin >> numOne >> numTwo >> numThree;
         while (cin.fail() || !( ( (numOne <= 100) && (numOne >= 1) && (numTwo <= 100) && (numTwo >= 1) && (numThree <= 100) && (numThree >= 1) ) ) ) {
@@ -89,28 +86,28 @@ int main() {
         cout << "\nEnter a company or restaurant you hate: ";
         getline(cin, companyOneHate);
 
-        //Three big numbers with input validation
+        //Three big numbers /w input validation
         cout << "\nEnter three numbers between 10,000 and 500,000, seperated by a space.\n";
         cin >> bigNumOne >> bigNumTwo >> bigNumThree;
         while (cin.fail() || !( ( (bigNumOne <= 500000) && (bigNumOne >= 10000) && (bigNumTwo <= 500000) && (bigNumTwo >= 10000) && (bigNumThree <= 500000) && (bigNumThree >= 10000) ) ) ) {
             cin.clear();
             cin.ignore(255, '\n');
-            if (!(numOne <= 500000 && numOne >= 10000)) {
+            if (!(bigNumOne <= 500000 && bigNumOne >= 10000)) {
                cout << "\nThe first number you entered was invalid.\n";
                cout << "Enter a number between 1 and 100.\n"; 
-               cin >> numOne;
+               cin >> bigNumOne;
             }
 
-            if (!(numTwo <= 500000 && numTwo >= 10000)) {
+            if (!(bigNumTwo <= 500000 && bigNumTwo >= 10000)) {
                 cout << "\nThe second number you entered was invalid.\n";
                 cout << "Enter a number between 1 and 100.\n";
-                cin >> numTwo;
+                cin >> bigNumTwo;
             }
 
-            if (!(numThree <= 50000 && numThree >= 10000)) {
+            if (!(bigNumThree <= 50000 && bigNumThree >= 10000)) {
                 cout << "\nThe third number you entered was invalid.\n";
-                cout << "Enter a number between 1 and 100.\n";
-                cin >> numThree;
+                cout << "Enter a number between 50,000 and 10,000.\n";
+                cin >> bigNumThree;
             }
         }
 
@@ -123,24 +120,192 @@ int main() {
         cout << "\nEnter a car that you hate: ";
         getline(cin, carOneHate);
 
-        //TODO: MASH RESULTS
 
-        //Calculate RNG
+
+        //***CALCULATE RNG***
 
         //House
+        switch(generateRandInt(1,4)) {
+            case 1:
+                houseType = "mansion";
+                break;
+            
+            case 2:
+                houseType = "apartment";
+                break;
 
+            case 3:
+                houseType = "shack";
+                break;
+
+            case 4:
+                houseType = "house";
+                break;
+
+            default:
+                cout << "Error calculating house RNG.\n";
+                return 0;
+                break;
+        }
+
+        //Spouse
+        switch(generateRandInt(1,3)) {
+            case 1:
+                marriedAdjective = "happily";
+                spouseName = personOneLike;
+                break;
+            
+            case 2:
+                marriedAdjective = "happily";
+                spouseName = personTwoLike;
+                break;
+            
+            case 3:
+                marriedAdjective = "miserably";
+                spouseName = personOneHate;
+                break;
+            
+            default:
+                cout << "Error calculating spouse RNG\n";
+                return 0;
+                break;
+        }
+
+        //Number of children
+        switch(generateRandInt(1,3)) {
+            case 1:
+                numChildren = numOne;
+                break;
+            
+            case 2:
+                numChildren = numTwo;
+                break;
+
+            case 3:
+                numChildren = numThree;
+                break;
+            
+            default:
+                cout << "Error calculating children RNG.\n";
+                return 0;
+                break;
+        }
+
+        //House location
+        switch(generateRandInt(1,3)) {
+            case 1:
+                houseLocation = locationOneLike;
+                break;
+            
+            case 2:
+                houseLocation = locationTwoLike;
+                break;
+            
+            case 3:
+                houseLocation = locationOneHate;
+                break;
+
+            default:
+                cout << "Error calculating house location RNG\n";
+                return 0;
+                break;
+        }
+
+        //Work location
+        switch(generateRandInt(1,3)) {
+            case 1:
+                jobLocation = companyOneLike;
+                break;
+            
+            case 2:
+                jobLocation = companyTwoLike;
+                break;
+            
+            case 3:
+                jobLocation = companyOneHate;
+                break;
+            
+            default:
+                cout << "Error calculating work location.\n";
+                return 0;
+                break;
+        }
+
+        //Job title
+        switch(generateRandInt(1,3)) {
+            case 1:
+                jobTitle = awesomeJobOne;
+                break;
+            
+            case 2:
+                jobTitle = awesomeJobTwo;
+                break;
+
+            case 3:
+                jobTitle = worstJobOne;
+                break;
+            
+            default:
+                cout << "Error calculating job title.\n";
+                return 0;
+                break;
+        }
+
+        //Salary
+        switch(generateRandInt(1,3)) {
+            case 1:
+                yearlySalary = bigNumOne;
+                break;
+            
+            case 2:
+                yearlySalary = bigNumTwo;
+                break;
+            
+            case 3:
+                yearlySalary = bigNumThree;
+                break;
+            
+            default:
+                cout << "Error calculating salary.\n";
+                return 0;
+                break;
+        }
+
+        //Car
+        switch(generateRandInt(1,3)) {
+            case 1:
+                carModel = carOneLike;
+                break;
+            
+            case 2:
+                carModel = carTwoLike;
+                break;
+            
+            case 3:
+                carModel = carOneHate;
+                break;
+            
+            default:
+                cout << "Error calculating car.\n";
+                return 0;
+                break;
+        }
 
         //Print results
-        cout << "****** MASH RESULTS ******\n";
+        cout << "\n\n\n****** MASH RESULTS ******\n";
         cout << "You will live in a " << houseType << ".\n";
         cout << "You will be " << marriedAdjective << " married to " << spouseName << ".\n";
         cout << "You and your spouse will have " << numChildren << " children.\n";
-        cout << "";
+        cout << "You will live in " << houseLocation << " .\n";
+        cout << "You will work at " << jobLocation << " as a " << jobTitle << " making $" << yearlySalary << " a year.\n";
+        cout << "You will drive a(n) " << carModel << ".\n\n\n";
 
     }
-    while(playGame);
+    cout << "\nBye!\n";
+    return 0;
 }
 
+//Display menu and returns true or false depending on user choice. No inputs.
 bool displayMenuGetChoice() {
     int userInput;
 
@@ -174,6 +339,7 @@ bool displayMenuGetChoice() {
 
 }
 
-int randomIntGenerator(int randLower, int randUpper) {
+//RNG Function. inputs: (lowest number in range, highest number in range)
+int generateRandInt(int randLower, int randUpper) {
      return ((rand() % (randUpper - randLower + 1)) + randLower);
 }
