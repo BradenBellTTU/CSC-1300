@@ -1,3 +1,11 @@
+/*
+    Title: prog2.cpp
+    Author: Braden Bell
+    Date: 02.28.22
+    Purpose: MASH Game
+*/
+
+
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -351,7 +359,7 @@ bool DisplayMenuGetChoice() {
     }
 }
 
-//RNG Function. inputs: (lowest number in range, highest number in range)
+//RNG Function. inputs: (lower range, upper range)
 int GenerateRandInt(int randLower, int randUpper) {
      return ((rand() % (randUpper - randLower + 1)) + randLower);
 }
