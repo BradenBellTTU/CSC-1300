@@ -8,7 +8,6 @@ void GoblinSickDays();
 
 //Main
 int main() {
-    
     //Variables
     int coolMessageCount;
     bool quit = false;
