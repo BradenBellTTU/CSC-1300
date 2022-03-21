@@ -1,3 +1,6 @@
+using namespace std;
+#include <string>
+
 #ifndef PRIMES_H
 #define PRIMES_H
 
