@@ -1,3 +1,11 @@
+/*
+	Title:  	Lab6.cpp
+	Author:		Braden Bell
+	Date:		?
+	Purpose:	Lab 6
+*/
+
+
 #include <iostream>
 using namespace std;
 

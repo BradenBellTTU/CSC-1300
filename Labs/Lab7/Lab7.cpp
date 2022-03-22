@@ -1,4 +1,13 @@
 #include "Primes.h"
+/*
+	Title:  	Lab7.cpp
+	Author:		Braden Bell
+	Date:		03.21.22
+	Purpose:	Lab 7 - practice with header files
+*/
+
+
+
 #include <iostream>
 #include <string>
 #include <fstream>
