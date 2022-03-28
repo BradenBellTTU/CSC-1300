@@ -1,7 +1,9 @@
+//For some reason, my compiler still complains when I don't include these libraries and establish namespace std in every file.
 #include <iostream>
 #include <string>
 using namespace std;
 
+//getElephantData takes poundsEaten, elephantNames, and SIZE as input and asks the user for data to fill the 2 arrays with.
 void getElephantData(float* poundsEaten, string* elephantNames, int SIZE) {
     cout << "Enter the name and how many pounds of food each elephant ate last month.\n";
     for (int i = 0; i < SIZE; i++) {
@@ -15,6 +17,8 @@ void getElephantData(float* poundsEaten, string* elephantNames, int SIZE) {
     }
 }
 
+/*getStats takes poundsEaten, SIZE, foodTotal, foodAverage, and mostFoodEaten as inputs and calculates the total pounds of food eaten by each
+elephant, average amount eaten by each elephant, and finds out which elephant ate the most by iterating through the arrays with for loops*/
 void getStats(float poundsEaten[], int SIZE, float &foodTotal, float &foodAverage, int &mostFoodEaten) {
     int mostFoodEatenCheck = 0;
     //Get total amount of food eaten by all elephants in array
@@ -34,13 +38,4 @@ void getStats(float poundsEaten[], int SIZE, float &foodTotal, float &foodAverag
     }
 
 }
-/*
-    int max = 0;
-    int maxVal = 0;
-    max = itemPrice[0];
-    for (int i = 0; i < NUM_ITEMS; i++) {
-        if (itemPrice[i] > max) {
-            maxVal = i;
-        }
-    }
-*/
+
