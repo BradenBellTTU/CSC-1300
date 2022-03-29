@@ -1,0 +1,10 @@
+1. *
+2. &
+3. pointer
+4. pointer
+5. an address
+6. 3.75
+7. an address
+8. 3.75
+9. yes, you would do: ptr = &another_pay;
+10. No, wrong datatype
