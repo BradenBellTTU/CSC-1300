@@ -2,7 +2,7 @@
 	Title:  	Lab9b.cpp
 	Author:		Braden Bell
 	Date:		03.29.22
-	Purpose:	Lab 9b
+	Purpose:	Lab 9b - pointer practice
     Required Files: None
 */
 
