@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 int carnOrHerb(string);
@@ -23,6 +24,10 @@ void printResults(int[], string[]);
 int main() {
     ifstream inFileStream;
     string dinoDirName;
+    string tempString;
+    const int LEN = 6;
+    int totalsArray[LEN];
+    string labelsArray[LEN] = {"TOTAL DINOS", "TOTAL CARNIVORE DINOS", "TOTAL HERBIVORE DINOS", "DINOS OVER 10,000 LBS", "DINO NAMES END IN 'SAURUS'", "ANIMALS NOT DINOS"};
 
     //Get directory file from user
     cout << "Dinosaur Directory File Name (dinoDirectory.txt): ";
@@ -31,18 +36,19 @@ int main() {
     inFileStream.open(dinoDirName);
     //Verify that the user input was valid and the file open correctly.
     //If not, then ask user for dir name and try again
-    while(cin.fail() || !(inFile.is_open())) {
+    while(cin.fail() || !(inFileStream.is_open())) {
         cin.clear();
         cin.ignore(255, '\n');
         cout << "Unexpected input or file not found, please try again.\n";
         cout << "Dinosaur Directory File Name (dinoDirectory.txt): ";
-        cin DirName;
-        inFileStream.open(dinoDirFile);
+        cin >> dinoDirName;
+        inFileStream.open(dinoDirName);
     }
 
     //Read data from directory file
-    while(getline(dinoDirFile))
-
+    while(getline(inFileStream, tempString,'#')) {
+        cout << tempString << ' ';
+    }
 
     return 0;
 
