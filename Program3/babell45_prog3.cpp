@@ -5,15 +5,11 @@
 	Purpose:	Dinosaur File Parsing
     Required Files: dinoDirectory.txt, carnivores.txt, herbivores.txt
 */
-
-
-
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <iomanip>
 using namespace std;
-
 
 int carnOrHerb(string);
 bool searchCarnivore(string);
@@ -25,6 +21,7 @@ void printResults(int[], string[]);
 
 int main() {
     ifstream inFileStream;
+    ofstream outHerbStream, outCarnStream, outOtherStream;
     string dinoDirName;
     string tempString;
     const int LEN = 6;
@@ -47,20 +44,22 @@ int main() {
         inFileStream.open(dinoDirName);
     }
 
-    cout << searchCarnivore("Tyrannosaurus Rex") << endl;
-    cout << searchCarnivore("hello") << endl;
-    cout << searchHerbivore("Triceratops") << endl;
-    cout << searchHerbivore("Hello") << endl;
+
+    
     /*Read data from directory file
     while(getline(inFileStream, tempString,'#')) {
         cout << tempString << ' ';
     }
     */
-
-   inFileStream.close();
+    outHerbStream.close();
+    outCarnStream.close();
+    outOtherStream.close();
+    inFileStream.close();
     return 0;
 }
 
+
+//TODO: WRITE DESC
 bool searchCarnivore(string animalName) {
     //Function vars
     ifstream inFileStream;
@@ -81,13 +80,13 @@ bool searchCarnivore(string animalName) {
         }
     }
 
+
     //Catch all
     inFileStream.close();
     return false;
 }
 
-
-
+//TODO: WRITE DESC
 bool searchHerbivore(string animalName) {
     //Function vars
     ifstream inFileStream;
@@ -111,4 +110,44 @@ bool searchHerbivore(string animalName) {
     //Catch all
     inFileStream.close();
     return false;
+}
+
+bool overTenGrand(string mass) {
+    int num = 0;
+    size_t found;
+
+    found = mass.find("to ");
+    if (found != string::npos) {
+        //cout << "'to' found" << endl;
+        mass.erase(mass.begin(), mass.begin()+(found+2));
+        //cout << "New String: " << mass << endl;
+    }
+
+    num = stoi(mass);
+    found = mass.find(",");
+
+    if (found != string::npos) {
+        //cout << "Comma found" << endl;
+        num *= 1000;
+    }
+    
+    if (num > 10000) 
+        return true;
+    
+    else
+        return false;
+}
+
+void printDino(ofstream& outFileStream, ifstream& inFileStream, string animalName, int totalsArray[]) {
+
+    size_t found;
+    
+    while(getline(inFileStream, tempString,'#')) {
+        found = mass.find("lbs");
+        if (found != string::npos)
+            overTenGrand(tempString);
+
+        
+        }
+    }
 }
