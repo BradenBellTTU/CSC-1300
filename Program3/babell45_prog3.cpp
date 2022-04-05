@@ -146,8 +146,6 @@ void printDino(ofstream& outFileStream, ifstream& inFileStream, string animalNam
         found = mass.find("lbs");
         if (found != string::npos)
             overTenGrand(tempString);
-
-        
         }
     }
 }
