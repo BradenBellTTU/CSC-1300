@@ -5,7 +5,8 @@
   "files.associations": {
     "iostream": "cpp",
     "*.tcc": "cpp",
-    "istream": "cpp"
+    "istream": "cpp",
+    "iomanip": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled"
 }

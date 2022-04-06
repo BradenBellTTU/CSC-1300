@@ -17,15 +17,18 @@ bool searchHerbivore(string);
 void printDino(ofstream&, ifstream&, string, int[]);
 bool overTenGrand(string);
 void printResults(int[], string[]);
+void clearFile(string);
+
 
 
 int main() {
     ifstream inFileStream;
-    ofstream outHerbStream, outCarnStream, outOtherStream;
+    ofstream outFileStream;
+    size_t found;
     string dinoDirName;
     string tempString;
-    const int LEN = 6;
-    int totalsArray[LEN];
+    const int LEN = 6, DINO_INFO_LEN = 4;
+    int totalsArray[LEN] = {0, 0, 0, 0, 0, 0};
     string labelsArray[LEN] = {"TOTAL DINOS", "TOTAL CARNIVORE DINOS", "TOTAL HERBIVORE DINOS", "DINOS OVER 10,000 LBS", "DINO NAMES END IN 'SAURUS'", "ANIMALS NOT DINOS"};
 
     //Get directory file from user
@@ -44,19 +47,56 @@ int main() {
         inFileStream.open(dinoDirName);
     }
 
+    //Clear the output files
+    clearFile("carnOutFile.txt");
+    clearFile("herbOutFile.txt");
+    clearFile("otherOutFile.txt");
 
+
+    while(getline(inFileStream, tempString, '#')) {
+        found = tempString.find("saurus");
+        if (found != string::npos)
+            totalsArray[4] += 1;
+
+        switch (carnOrHerb(tempString)) {
+            case 1:
+                totalsArray[1] += 1;
+                totalsArray[0] += 1;
+                outFileStream.open("carnOutFile.txt", ios::app);
+                cout << tempString << " is being printed to the CARNIVORE file!\n";
+                break;
+
+            case 2:
+                totalsArray[2] += 1;
+                totalsArray[0] += 1;
+                outFileStream.open("herbOutFile.txt", ios::app);
+                cout << tempString << " is being printed to the HERBAVORE file!\n";
+                break;
+
+            case -1:
+                totalsArray[5] += 1;
+                outFileStream.open("otherOutFile.txt", ios::app);
+                cout << tempString << " is being printed to the OTHER file!\n";
+                break;
+        }
+        printDino(outFileStream, inFileStream, tempString, totalsArray);
+        outFileStream << '\n';
+        outFileStream.close();
+    }
+
+    printResults(totalsArray, labelsArray);
+    outFileStream.close();
+    inFileStream.close();
+    return 0;
+}
     
     /*Read data from directory file
     while(getline(inFileStream, tempString,'#')) {
         cout << tempString << ' ';
     }
     */
-    outHerbStream.close();
-    outCarnStream.close();
-    outOtherStream.close();
-    inFileStream.close();
-    return 0;
-}
+
+
 
 
 //TODO: WRITE DESC
@@ -123,6 +163,7 @@ bool overTenGrand(string mass) {
         //cout << "New String: " << mass << endl;
     }
 
+    cout << mass << "\n";
     num = stoi(mass);
     found = mass.find(",");
 
@@ -139,13 +180,66 @@ bool overTenGrand(string mass) {
 }
 
 void printDino(ofstream& outFileStream, ifstream& inFileStream, string animalName, int totalsArray[]) {
-
+    string tempString;
     size_t found;
+    const int DINO_INFO_LEN = 4;
     
-    while(getline(inFileStream, tempString,'#')) {
-        found = mass.find("lbs");
-        if (found != string::npos)
-            overTenGrand(tempString);
+    outFileStream << "DINOSAUR NAME: " << setw(1) << " " << animalName << "\n";
+    for(int i = 0; i < DINO_INFO_LEN; i++) {
+        getline(inFileStream, tempString, '#');
+        found = tempString.find(" lbs");
+        if ((found != string::npos) && (overTenGrand(tempString)))
+            totalsArray[3] += 1;
+
+        switch (i) {
+            case 0:
+                outFileStream << "HEIGHT: " << setw(8) << " " << tempString << "\n";
+                break;
+            
+            case 1:
+                outFileStream << "WEIGHT: " << setw(8) << " " << tempString << "\n";
+                break;
+            
+            case 2:
+                outFileStream << "EATS: " << setw(10) << " " << tempString << "\n";
+                break;
+            
+            case 3:
+                outFileStream << "DESCRIPTION: " << setw(3) << " " << tempString << "\n";
+                break;
+            
+            default:
+                cout << "Error in printDino\n";
+                break;
         }
     }
+}
+
+
+int carnOrHerb(string animalName) {
+    if (searchCarnivore(animalName))
+        return 1;
+
+    else if (searchHerbivore(animalName))
+        return 2;
+
+    else
+        return -1;
+}
+
+void printResults(int totalsArray[], string labelsArray[]) {
+    string line(50, '-');
+    const int LEN = 6;
+
+    cout << line << '\n';
+
+    for (int i = 0; i < LEN; i++) {
+        cout << labelsArray[i] << ": " << totalsArray[i] << '\n';
+    }
+}
+
+void clearFile(string fileName) {
+    ofstream outFileStream;
+    outFileStream.open(fileName, ios::trunc);
+    outFileStream.close();
 }
