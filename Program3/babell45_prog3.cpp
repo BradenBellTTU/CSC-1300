@@ -290,6 +290,8 @@ void printResults(int totalsArray[], string labelsArray[]) {
     for (int i = 0; i < LEN; i++) {
         cout << labelsArray[i] << ": " << totalsArray[i] << '\n';
     }
+
+    cout << line << '\n';
 }
 
 
