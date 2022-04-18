@@ -2,13 +2,23 @@
 #include <string>
 using namespace std;
 
-
-int* makeArray(int numDays) {
+/*
+                    -=makeArray Function=-
+Type: int*
+Desc: Dynamically allocates an array based off of user input
+*/
+int* makeArray(int size) {
     int* arr;
-    arr = new int[numDays];
+    arr = new int[size];
     return arr;
 }
 
+/*
+                -=enterStolenMoonPies Function=-
+Type: void
+Desc. Populates the arr array
+*/
+                
 void enterStolenMoonPies(int* arr, int numDays) {
     int total = 0;
     float average = 0;
@@ -21,6 +31,11 @@ void enterStolenMoonPies(int* arr, int numDays) {
     }
 }
 
+/*
+                -=highestMoonPies Function=-
+Type: int
+Desc: Finds the highest value in the arr array and returns it
+*/
 int highestMoonPies(int* arr, int numDays) {
     int i, max;
     max = *(arr);
@@ -33,6 +48,11 @@ int highestMoonPies(int* arr, int numDays) {
     return max;
 }
 
+/*
+                -=lowestMoonPies Function=-
+Type: int
+Desc: Finds the lowest value in the arr array and returns it
+*/
 int lowestMoonPies(int* arr, int numDays) {
     int i, min;
     min = *(arr);
@@ -45,6 +65,11 @@ int lowestMoonPies(int* arr, int numDays) {
     return min;
 }
 
+/*
+                -=totalMoonPies Function=-
+Type: int
+Desc: Calculates sum of all values in arr
+*/
 int totalMoonPies(int* arr, int numDays) {
     int total = 0;
     //Iterate through arr and add the sum of all its values to total
@@ -55,6 +80,11 @@ int totalMoonPies(int* arr, int numDays) {
     return total;
 }
 
+/*
+                -=averageMoonPies Function=-
+Type: float
+Desc: calculates average number of moon pies stolen per day
+*/
 float averageMoonPies(int* arr, int numDays, int total) {
     float average = 0;
     //Calculate average of the array, store it in 'average,' and return 'average'
