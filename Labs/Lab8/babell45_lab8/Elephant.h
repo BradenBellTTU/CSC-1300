@@ -1,6 +1,3 @@
-using namespace std;
-#include <string>
-
 #ifndef ELEPHANT_H
 
 #define ELEPHANT_H
