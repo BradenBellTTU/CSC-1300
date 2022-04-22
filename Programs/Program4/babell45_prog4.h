@@ -19,7 +19,19 @@ struct Heroes {
     Rent rent;
 };
 
-void enterHeroes(int, int, int*);
+int enterHeroes(int, int, Heroes*);
+
+void deleteHeroes(int, Heroes*);
+
+void moveArrayElements(string, int, Heroes*);
+
+void printHeroes(int, Heroes*);
+
+void printRentDetails(int, Heroes*);
+
+void saveToFile(int, Heroes*);
+
+
 
 #endif
 
