@@ -13,18 +13,23 @@ void addPhone(Phone*);
 void printArray(Phone*);
 
 int main() {
+
+    //Makes an array using the Phone object
     Phone* phoneArray;
     phoneArray = new Phone[SIZE];
+
+
     addPhone(phoneArray);
     printArray(phoneArray);
+
+    //Delete the array
     delete [] phoneArray;
     return 0;
 }
 
 
-
+//Iterate through the array and populate it with data
 void addPhone(Phone* phoneArray) {
-
     for(int i = 0; i < SIZE; i++) {
         cout << "Enter data for phone number " << i + 1 << '\n';
         cout << "What phone do you have?\n";
@@ -37,8 +42,8 @@ void addPhone(Phone* phoneArray) {
     }
 }
 
+//Prints contents of the array
 void printArray(Phone* phoneArray) {
-
     for(int i = 0; i < SIZE; i++) {
         cout << "Phone:\t\t" << phoneArray[i].type << '\n';
         cout << "Color:\t\t" << phoneArray[i].color << '\n';
