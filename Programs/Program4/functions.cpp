@@ -1,13 +1,11 @@
-#include <iostream>
-#include <string>
-#include <iomanip>
 #include "prog4.h"
-using namespace std;
+
 
 int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
     int userIntChoice;
     char userCharChoice;
-    
+    ifstream inFileStream;
+
 
     //Check to verify the heroes array isn't maxed out
     if (maxHeroes < numHeroes) {
@@ -32,7 +30,7 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
 
     switch (userIntChoice) {
         case 1:
-            //File stuff
+            
             break;
         
         case 2:
@@ -53,6 +51,7 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
                     cout << "Would you like to save your superheros list to a file? (y/n) ";
                     cin >> userCharChoice;
                 }
+
                 switch (userCharChoice) {
                     case 'y':
                         heroArray[i].dangerous = true;
@@ -103,6 +102,7 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
                 }
 
                 cout << "The " << heroArray[i].name << " has been added.\n";
+                numHeroes += 1;
 
                 cout << "Want to add more heroes? (y or n) ";
                 cin >> userCharChoice;
