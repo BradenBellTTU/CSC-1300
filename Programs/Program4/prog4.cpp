@@ -1,4 +1,4 @@
-#include "babell45_prog4.h"
+#include "prog4.h"
 
 int main() {
     //Vars
@@ -71,6 +71,8 @@ int main() {
                 switch(tolower(userChar)) {
                     case 'y':
                         //saveToFile();
+                        cout << "Goodbye.\n";
+                        return 0;
                         break;
                     
                     case 'n':

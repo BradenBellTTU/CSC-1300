@@ -3,8 +3,8 @@
 #include <iomanip>
 using namespace std;
 
-#ifndef BABELL_45_PROG4_H
-#define BABELL_45_PROG4_H
+#ifndef PROG4_H
+#define PROG4_H
 
 struct Rent {
     float cost;
@@ -30,8 +30,6 @@ void printHeroes(int, Heroes*);
 void printRentDetails(int, Heroes*);
 
 void saveToFile(int, Heroes*);
-
-
 
 #endif
 
