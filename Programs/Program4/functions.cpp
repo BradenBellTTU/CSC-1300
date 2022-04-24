@@ -297,7 +297,7 @@ void printRentDetails(int, Heroes*);
 
 void saveToFile(int, Heroes*);
 
-void printHeros(int numHeroes, Heroes* heroArray) {
+void printHeroes(int numHeroes, Heroes* heroArray) {
     string line(25, '-');
 
     for (int i = 0; i < numHeroes; i++) {
