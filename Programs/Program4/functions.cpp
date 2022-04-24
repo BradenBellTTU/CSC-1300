@@ -2,9 +2,10 @@
 
 
 int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
-    int userIntChoice;
+    int userIntChoice = 0;
     char userCharChoice;
     ifstream inFileStream;
+
 
 
     //Check to verify the heroes array isn't maxed out
@@ -26,6 +27,7 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
         cin.ignore(255, '\n');
         cout << "Unexpected input, please try again.\n";
         cout << "CHOICE: ";
+        cin >> userIntChoice;
     }
 
     switch (userIntChoice) {
