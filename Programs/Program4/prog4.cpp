@@ -17,9 +17,9 @@ int main() {
         cin >> maxHeroes;
     }
 
-    //Dynamically allocate heroesArray
-    Heroes* heroesArray;
-    heroesArray = new Heroes[maxHeroes];
+    //Dynamically allocate heroArray
+    Heroes* heroArray;
+    heroArray = new Heroes[maxHeroes];
 
     do {
         cout << '\n';
@@ -42,7 +42,7 @@ int main() {
 
         switch (userChoice) {
             case 1:
-                enterHeroes(maxHeroes, numHeroes, heroesArray);
+                numHeroes = enterHeroes(maxHeroes, numHeroes, heroArray);
                 break;
 
             case 2:
@@ -95,6 +95,7 @@ int main() {
     }
     while(runProgram == true);
     
+    delete [] heroArray;
     return 0;
 
 }
