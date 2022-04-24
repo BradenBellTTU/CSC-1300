@@ -2,10 +2,10 @@
 
 
 int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
-    int userIntChoice = 0;
+    int userIntChoice;
     char userCharChoice;
     ifstream inFileStream;
-
+    string tempString, heroFileName;
 
 
     //Check to verify the heroes array isn't maxed out
@@ -27,12 +27,34 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
         cin.ignore(255, '\n');
         cout << "Unexpected input, please try again.\n";
         cout << "CHOICE: ";
-        cin >> userIntChoice;
     }
 
     switch (userIntChoice) {
         case 1:
+
+            cout << "What is the name of the file with your list of superheroes? (ex: filename.txt)\n";
+            cout << "FILENAME: ";
             
+            
+            //Try to open file
+            inFileStream.open(heroFileName);
+
+            //Verify that the user input was valid and the file opens correctly.
+            //If not, then ask user for dir name and try again
+            while(cin.fail() || !(inFileStream.is_open())) {
+                cin.clear();
+                cin.ignore(255, '\n');
+                cout << "Unexpected input or file not found, please try again.\n";
+                cout << "What is the name of the file with your list of superheroes? (ex: filename.txt)";
+                cin >> heroFileName;
+                inFileStream.open(heroFileName);
+    }
+
+            for (int i = 0; i < maxHeroes; i++) {
+                
+            }
+
+
             break;
         
         case 2:
