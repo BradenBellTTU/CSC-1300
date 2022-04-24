@@ -50,7 +50,7 @@ int main() {
                 break;
 
             case 3:
-                //printHeros();
+                printHeroes(numHeroes, heroArray);
                 break;
 
             case 4:

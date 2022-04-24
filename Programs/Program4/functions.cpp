@@ -210,6 +210,11 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
     return numHeroes;
 }
 
+
+
+
+
+
 int deleteHeroes(int numHeroes, Heroes* heroArray) {
     string removeHero;
 
@@ -242,7 +247,19 @@ int deleteHeroes(int numHeroes, Heroes* heroArray) {
 
 }
 
+
+
+
+
+
 bool moveArrayElements(string, int, Heroes*);
+
+
+
+
+
+
+
 
 void saveToFile(int numHero, Heroes* heroArray) {
     string exportFileName;
@@ -275,6 +292,27 @@ void saveToFile(int numHero, Heroes* heroArray) {
     cout << "\nYour superheroes were successfully saved to " << exportFileName << " file.\n";
 }
 
+
 void printRentDetails(int, Heroes*);
 
 void saveToFile(int, Heroes*);
+
+void printHeros(int numHeroes, Heroes* heroArray) {
+    string line(25, '-');
+
+    for (int i = 0; i < numHeroes; i++) {
+        cout << line << "SUPERHERO " << i + 1 << line;
+        cout << "NAME: " << setw(10) << heroArray[i].name << '\n';
+        cout << "DESCRIPTION: " << setw(10) << heroArray[i].description << '\n';
+        cout << "DANGEROUS? " << setw(10);
+        if (heroArray[i].dangerous)
+            cout << "Yes\n";
+        else
+            cout << "No\n";
+
+        cout << "RENT PRICE: " << setw(10) << "$ " << heroArray[i].rent.cost << '\n';
+        cout << "DAMAGE COST: " << setw(10) << "$ " << heroArray[i].rent.damage_cost << '\n';
+        cout << "YEARS: " << setw(10) << heroArray[i].rent.years << '\n';
+    }
+    
+}

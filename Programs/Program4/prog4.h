@@ -23,14 +23,19 @@ struct Heroes {
 //DONE
 int enterHeroes(int, int, Heroes*);
 
+//DONE (waiting on Jeb's moveArrayElements)
 int deleteHeroes(int, Heroes*);
 
+//Jeb
 bool moveArrayElements(string, int, Heroes*);
 
+//WIP
 void printHeroes(int, Heroes*);
 
+//WIP
 void printRentDetails(int, Heroes*);
 
+//DONE
 void saveToFile(int, Heroes*);
 
 #endif
