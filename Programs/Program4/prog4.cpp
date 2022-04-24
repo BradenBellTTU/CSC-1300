@@ -70,7 +70,7 @@ int main() {
 
                 switch(tolower(userChar)) {
                     case 'y':
-                        //saveToFile();
+                        saveToFile(numHeroes, heroArray);
                         cout << "Goodbye.\n";
                         return 0;
                         break;

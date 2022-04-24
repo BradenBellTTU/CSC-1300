@@ -210,11 +210,70 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
     return numHeroes;
 }
 
-void deleteHeroes(int, Heroes*);
+int deleteHeroes(int numHeroes, Heroes* heroArray) {
+    string removeHero;
 
-void moveArrayElements(string, int, Heroes*);
+    cout << "The following is a list of heroes living in your condo complex:\n";
+    for (int i = 0; i < numHeroes; i++) {
+        cout << heroArray[i].name << '\n';
+    }
 
-void printHeroes(int, Heroes*);
+    cout << "Which hero are you kicking out of your complex?\n";
+    cout << "SUPERHERO NAME: ";
+    getline(cin, removeHero);
+    while(cin.fail()) {
+        cin.clear();
+        cin.ignore(255, '\n');
+        cout << "Unexpected input, please try again.\n\n";
+        cout << "Which hero are you kicking out of your complex?\n";
+        cout << "SUPERHERO NAME: ";
+        getline(cin, removeHero);
+    }
+/*
+    if(moveArrayElements(removeHero, numHeroes, heroArray)) {
+        cout << "You have removed " << removeHero << ".\n";
+        numHeroes -= 1;
+    }
+    
+    else 
+        cout << "Sorry a hero by the name " << removeHero << " could not be found.\n";
+*/
+    return numHeroes;
+
+}
+
+bool moveArrayElements(string, int, Heroes*);
+
+void saveToFile(int numHero, Heroes* heroArray) {
+    string exportFileName;
+    ofstream outFileStream;
+
+    cin.ignore();
+    cout << "Type name of file: "; 
+    getline(cin, exportFileName);
+    
+    outFileStream.open(exportFileName);
+
+    while(cin.fail() || !(outFileStream.is_open())) {
+    cin.clear();
+    cin.ignore(255, '\n');
+    cout << "Unexpected input or file not found, please try again.\n";
+    cout << "Type name of file:  ";
+    cin >> exportFileName;
+    outFileStream.open(exportFileName);
+    }
+
+    for (int i=0; i < numHero; i++) {
+        outFileStream << heroArray[i].name << "#";
+        outFileStream << heroArray[i].description << "#";
+        outFileStream << heroArray[i].dangerous << "#";
+        outFileStream << heroArray[i].rent.cost << "#";
+        outFileStream << heroArray[i].rent.damage_cost << "#";
+        outFileStream << heroArray[i].rent.years << "#";
+    }
+    outFileStream.close();
+    cout << "\nYour superheroes were successfully saved to " << exportFileName << " file.\n";
+}
 
 void printRentDetails(int, Heroes*);
 

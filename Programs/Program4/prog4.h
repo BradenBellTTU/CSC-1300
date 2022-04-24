@@ -23,9 +23,9 @@ struct Heroes {
 //DONE
 int enterHeroes(int, int, Heroes*);
 
-void deleteHeroes(int, Heroes*);
+int deleteHeroes(int, Heroes*);
 
-void moveArrayElements(string, int, Heroes*);
+bool moveArrayElements(string, int, Heroes*);
 
 void printHeroes(int, Heroes*);
 
