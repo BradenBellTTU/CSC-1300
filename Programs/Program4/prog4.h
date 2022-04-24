@@ -20,7 +20,7 @@ struct Heroes {
     Rent rent;
 };
 
-
+//DONE
 int enterHeroes(int, int, Heroes*);
 
 void deleteHeroes(int, Heroes*);

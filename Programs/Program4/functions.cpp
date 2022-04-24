@@ -2,15 +2,16 @@
 
 
 int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
-    int userIntChoice;
+    int userIntChoice, count = 1;
     char userCharChoice;
     ifstream inFileStream;
     string tempString, heroFileName;
 
 
     //Check to verify the heroes array isn't maxed out
-    if (maxHeroes < numHeroes) {
-        cout << "Sorry, your complex can only hold 7 heroes.\n";
+    cout << numHeroes;
+    if (maxHeroes <= numHeroes) {
+        cout << "Sorry, your complex can only hold " << maxHeroes << " heroes.\n";
         cout << "You cannot add any more!\n";
         return numHeroes;
     }
@@ -33,8 +34,8 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
         case 1:
 
             cout << "What is the name of the file with your list of superheroes? (ex: filename.txt)\n";
-            cout << "FILENAME: ";
-            
+            cout << "FILE NAME: ";
+            cin >> heroFileName;
             
             //Try to open file
             inFileStream.open(heroFileName);
@@ -46,15 +47,70 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
                 cin.ignore(255, '\n');
                 cout << "Unexpected input or file not found, please try again.\n";
                 cout << "What is the name of the file with your list of superheroes? (ex: filename.txt)";
+                cout << "FILE NAME: ";
                 cin >> heroFileName;
                 inFileStream.open(heroFileName);
     }
 
-            for (int i = 0; i < maxHeroes; i++) {
-                
+            while(getline(inFileStream, tempString, '#')) {
+                switch(count) {
+                    case 1:
+                        heroArray[numHeroes].name = tempString;
+                        //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
+                        count += 1;
+                        break;
+
+                    case 2:
+                        heroArray[numHeroes].description = tempString;
+                        //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
+                        count += 1;
+                        break;
+
+                    case 3:
+                        if (tempString == "0") {
+                            heroArray[numHeroes].dangerous = false;
+                            //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
+                        }
+
+                        else if (tempString == "1") {
+                            heroArray[numHeroes].dangerous = true;
+                            //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
+                        }
+
+                        count += 1;
+                        break;
+
+                    case 4:
+                        heroArray[numHeroes].rent.cost = stof(tempString);
+                        //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
+                        count += 1;
+                        break;
+
+                    case 5:
+                        heroArray[numHeroes].rent.damage_cost = stof(tempString);
+                        //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
+                        count += 1;
+                        break;
+
+                    case 6:
+                        heroArray[numHeroes].rent.years = stof(tempString);
+                        //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
+                        count = 1;
+                        numHeroes += 1;
+                        break;
+
+                    default:
+                        cout << "Error in importing file data switch statement!\n";
+                        cout << "Function return default\n";
+                        return numHeroes;
+                        break;
+                }
             }
 
+            cout << numHeroes << " heroe(s) from " << heroFileName << " have been added to your condo complex.\n";
 
+            inFileStream.close();
+            //cout << "File closed\n";
             break;
         
         case 2:
@@ -151,7 +207,7 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
             break;
     }
 
-    return 0;
+    return numHeroes;
 }
 
 void deleteHeroes(int, Heroes*);
