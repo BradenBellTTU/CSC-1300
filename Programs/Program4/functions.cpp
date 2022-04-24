@@ -299,20 +299,22 @@ void saveToFile(int, Heroes*);
 
 void printHeroes(int numHeroes, Heroes* heroArray) {
     string line(25, '-');
+    string tabs(2, '\t');
 
     for (int i = 0; i < numHeroes; i++) {
-        cout << line << "SUPERHERO " << i + 1 << line;
-        cout << "NAME: " << setw(10) << heroArray[i].name << '\n';
-        cout << "DESCRIPTION: " << setw(10) << heroArray[i].description << '\n';
-        cout << "DANGEROUS? " << setw(10);
+        cout << '\n' << line << "SUPERHERO " << i + 1 << line << '\n';
+        cout << "NAME: " << tabs << heroArray[i].name << '\n';
+        cout << "DESCRIPTION:\n";
+        cout << heroArray[i].description << "\n\n";
+        cout << "DANGEROUS?" << tabs;
         if (heroArray[i].dangerous)
             cout << "Yes\n";
         else
             cout << "No\n";
 
-        cout << "RENT PRICE: " << setw(10) << "$ " << heroArray[i].rent.cost << '\n';
-        cout << "DAMAGE COST: " << setw(10) << "$ " << heroArray[i].rent.damage_cost << '\n';
-        cout << "YEARS: " << setw(10) << heroArray[i].rent.years << '\n';
+        cout << "RENT PRICE:" << tabs << "$ " << heroArray[i].rent.cost << '\n';
+        cout << "DAMAGE COST:" << tabs << "$ " << heroArray[i].rent.damage_cost << '\n';
+        cout << "YEARS:" << tabs << '\t' << heroArray[i].rent.years << '\n';
     }
     
 }
