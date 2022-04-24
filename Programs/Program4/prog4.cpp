@@ -24,12 +24,12 @@ int main() {
     do {
         cout << '\n';
         cout << "What would you like to do?\n";
-        cout << setw(5) << "1.  Enter some superheros\n";
-        cout << setw(5) << "2.  Delete a superhero\n";
-        cout << setw(5) << "3.  Print all superheros\n";
-        cout << setw(5) << "4.  Print rent details\n";
-        cout << setw(5) << "5.  End program\n";
-        cout << setw(5) << "Enter an option 1-5\n";
+        cout << "\t\t1.  Enter some superheros\n";
+        cout << "\t\t2.  Delete a superhero\n";
+        cout << "\t\t3.  Print all superheros\n";
+        cout << "\t\t4.  Print rent details\n";
+        cout << "\t\t5.  End program\n";
+        cout << "\t\tEnter an option 1-5\n";
         cout << "CHOICE: ";
         cin >> userChoice;
         while(cin.fail() || !((userChoice >= 1) && (userChoice <= 5)) ) {
