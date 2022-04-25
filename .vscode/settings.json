@@ -6,7 +6,8 @@
     "iostream": "cpp",
     "*.tcc": "cpp",
     "istream": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "iosfwd": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled"
 }

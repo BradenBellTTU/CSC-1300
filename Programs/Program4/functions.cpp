@@ -6,10 +6,10 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
     char userCharChoice;
     ifstream inFileStream;
     string tempString, heroFileName;
+    bool run = true;
 
 
     //Check to verify the heroes array isn't maxed out
-    cout << numHeroes;
     if (maxHeroes <= numHeroes) {
         cout << "Sorry, your complex can only hold " << maxHeroes << " heroes.\n";
         cout << "You cannot add any more!\n";
@@ -51,8 +51,8 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
                 cin >> heroFileName;
                 inFileStream.open(heroFileName);
     }
-
-            while(getline(inFileStream, tempString, '#')) {
+            
+            while(getline(inFileStream, tempString, '#') && run == true) {
                 switch(count) {
                     case 1:
                         heroArray[numHeroes].name = tempString;
@@ -97,6 +97,8 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
                         //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
                         count = 1;
                         numHeroes += 1;
+                        if (numHeroes >= maxHeroes)
+                            run = false;
                         break;
 
                     default:
@@ -107,7 +109,7 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
                 }
             }
 
-            cout << numHeroes << " heroe(s) from " << heroFileName << " have been added to your condo complex.\n";
+            cout << numHeroes << " hero(es) from " << heroFileName << " have been added to your condo complex.\n";
 
             inFileStream.close();
             //cout << "File closed\n";
@@ -248,15 +250,7 @@ int deleteHeroes(int numHeroes, Heroes* heroArray) {
 }
 
 
-
-
-
-
 bool moveArrayElements(string, int, Heroes*);
-
-
-
-
 
 
 
@@ -293,10 +287,6 @@ void saveToFile(int numHero, Heroes* heroArray) {
 }
 
 
-void printRentDetails(int, Heroes*);
-
-void saveToFile(int, Heroes*);
-
 void printHeroes(int numHeroes, Heroes* heroArray) {
     string line(25, '-');
     string tabs(2, '\t');
@@ -317,4 +307,30 @@ void printHeroes(int numHeroes, Heroes* heroArray) {
         cout << "YEARS:" << tabs << '\t' << heroArray[i].rent.years << '\n';
     }
     
+}
+
+void printRentDetails(int numHeroes, Heroes* heroArray) {
+    string tabs(2, '\t');
+    string line(25, '-');
+    float rentTotal = 0, damageTotal = 0;
+    cout << "RENT DETAILS OF EACH HERO:\n\n";
+    cout << "SUPERHERO" << tabs << "MONTHLY RENT" << tabs << "DAMAGE COST\n";
+    cout <<	setprecision(2) << fixed << showpoint; 
+
+    for (int i = 0; i < numHeroes; i++) {
+
+        cout << heroArray[i].name;
+        if ((heroArray[i].name).length() < 8)
+            cout << "\t\t\t";
+        else
+            cout << "\t\t";
+
+        cout << '$' << heroArray[i].rent.cost << setw(19) << '$' << heroArray[i].rent.damage_cost << '\n';
+        rentTotal += heroArray[i].rent.cost;
+        damageTotal += heroArray[i].rent.damage_cost;
+    }
+
+    cout << line << "\n\n";
+    cout << "TOTALS: " << tabs << '$'<< rentTotal << tabs << " $" << damageTotal << '\n';
+
 }

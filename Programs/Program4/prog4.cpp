@@ -21,7 +21,7 @@ int main() {
     Heroes* heroArray;
     heroArray = new Heroes[maxHeroes];
 
-    do {
+    while(true) {
         cout << '\n';
         cout << "What would you like to do?\n";
         cout << "\t\t1.  Enter some superheros\n";
@@ -54,7 +54,7 @@ int main() {
                 break;
 
             case 4:
-                //printRentDetails();
+                printRentDetails(numHeroes, heroArray);
                 break;
 
             case 5:
@@ -93,7 +93,7 @@ int main() {
                 break;
         }
     }
-    while(runProgram == true);
+
     
     delete [] heroArray;
     return 0;

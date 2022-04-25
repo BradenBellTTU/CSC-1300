@@ -29,7 +29,7 @@ int deleteHeroes(int, Heroes*);
 //Jeb
 bool moveArrayElements(string, int, Heroes*);
 
-//WIP
+//DONE
 void printHeroes(int, Heroes*);
 
 //WIP
@@ -37,6 +37,7 @@ void printRentDetails(int, Heroes*);
 
 //DONE
 void saveToFile(int, Heroes*);
+
 
 #endif
 
