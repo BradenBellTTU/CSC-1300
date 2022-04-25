@@ -55,8 +55,8 @@ int enterHeroes(int maxHeroes, int numHeroes, Heroes* heroArray) {
             while(cin.fail() || !(inFileStream.is_open())) {
                 cin.clear();
                 cin.ignore(255, '\n');
-                cout << "Unexpected input or file not found, please try again.\n";
-                cout << "What is the name of the file with your list of superheroes? (ex: filename.txt)";
+                cout << "Unexpected input or file not found, please try again.\n\n";
+                cout << "What is the name of the file with your list of superheroes? (ex: filename.txt)\n";
                 cout << "FILE NAME: ";
                 cin >> heroFileName;
                 inFileStream.open(heroFileName);
@@ -405,24 +405,20 @@ void printRentDetails(int numHeroes, Heroes* heroArray) {
     cout <<	setprecision(2) << fixed << showpoint; 
 
     //Display rent data in heroArray
-    for (int i = 0; i < numHeroes; i++) {
+    for(int i = 0; i < numHeroes; i++){
         cout << heroArray[i].name;
-
-        //An if statement is used here to preserve formatting
-        if ((heroArray[i].name).length() < 8)
-            cout << "\t\t\t";
-        else
-            cout << "\t\t";
-
-        cout << '$' << heroArray[i].rent.cost << setw(19) << '$' << heroArray[i].rent.damage_cost << '\n';
-        
-        //Add values stored in heroArray to rentTotal & damageTotal
+        if((heroArray[i].name).length() < 8)
+            cout << "\t";
+        cout << tabs << "$" << heroArray[i].rent.cost;
+        if(to_string(heroArray[i].rent.cost).length() < 11)
+            cout << "\t";
+        cout << tabs << "$" << heroArray[i].rent.damage_cost << endl;
         rentTotal += heroArray[i].rent.cost;
         damageTotal += heroArray[i].rent.damage_cost;
     }
 
     //Display totals vars
     cout << line << "\n\n";
-    cout << "TOTALS: " << tabs << '$'<< rentTotal << tabs << " $" << damageTotal << '\n';
+    cout << "TOTALS: " << tabs << '$'<< rentTotal << tabs << "$" << damageTotal << '\n';
 
 }
