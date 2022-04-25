@@ -125,5 +125,4 @@ int main() {
     delete [] heroArray;
     cout << "Error in main loop. Exiting program\n";
     return 1;
-
 }

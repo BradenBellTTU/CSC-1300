@@ -289,7 +289,7 @@ int deleteHeroes(int numHeroes, Heroes* heroArray) {
 | delete the hero data the user selects. It then shifts the array to fill in the gap |
 +------------------------------------------------------------------------------------+
 */
-bool moveArrayElements(string heroName, int numHeroes, Heroes *heroArray) {
+bool moveArrayElements(string heroName, int numHeroes, Heroes* heroArray) {
     for (int i = 0; i < numHeroes; i++) {
         if (heroName == heroArray[i].name) {
             for (int j = i; j < numHeroes; j++) {
