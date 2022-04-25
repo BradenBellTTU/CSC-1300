@@ -311,7 +311,7 @@ void printHeroes(int numHeroes, Heroes* heroArray) {
 
 void printRentDetails(int numHeroes, Heroes* heroArray) {
     string tabs(2, '\t');
-    string line(25, '-');
+    string line(50, '-');
     float rentTotal = 0, damageTotal = 0;
     cout << "RENT DETAILS OF EACH HERO:\n\n";
     cout << "SUPERHERO" << tabs << "MONTHLY RENT" << tabs << "DAMAGE COST\n";
