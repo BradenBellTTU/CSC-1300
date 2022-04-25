@@ -4,8 +4,8 @@
 #include <fstream>
 using namespace std;
 
-#ifndef PROG4_H
-#define PROG4_H
+#ifndef BABELL45_PROG4_H
+#define BABELL45_PROG4_H
 
 struct Rent {
     float cost;

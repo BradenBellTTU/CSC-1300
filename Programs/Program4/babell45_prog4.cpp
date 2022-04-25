@@ -1,12 +1,19 @@
-#include "prog4.h"
+/*
++----------------------------------------------------------------+
+| Braden Bell | Program #4 - Hero Condo Manager | April 25, 2022 |
++----------------------------------------------------------------+
+| Required Files: babell45_functions.cpp & babell45_prog4.h      |
++----------------------------------------------------------------+
+*/
+
+#include "babell45_prog4.h"
 
 int main() {
     //Vars
     int maxHeroes = 0, numHeroes = 0, userChoice = 0;
     char userChar = 'n';
-    bool runProgram = true;
 
-
+    //Establish size of dynamic array by asking user
     cout << "How many superheros can live in your condo complex? ";
     cin >> maxHeroes;
     while(cin.fail() || (maxHeroes < 0)) {
@@ -17,11 +24,13 @@ int main() {
         cin >> maxHeroes;
     }
 
-    //Dynamically allocate heroArray
+    //Dynamicall allocate heroArray
     Heroes* heroArray;
     heroArray = new Heroes[maxHeroes];
 
+    //Main menu loop
     while(true) {
+        //Display menu
         cout << '\n';
         cout << "What would you like to do?\n";
         cout << "\t\t1.  Enter some superheros\n";
@@ -31,6 +40,8 @@ int main() {
         cout << "\t\t5.  End program\n";
         cout << "\t\tEnter an option 1-5\n";
         cout << "CHOICE: ";
+
+        //Get user input with validation
         cin >> userChoice;
         while(cin.fail() || !((userChoice >= 1) && (userChoice <= 5)) ) {
             cin.clear();
@@ -40,24 +51,31 @@ int main() {
             cin >> userChoice;
         }
 
+        //Switch statement based off of user's choice
         switch (userChoice) {
+            //Menu option 1 - populate hero array
             case 1:
                 numHeroes = enterHeroes(maxHeroes, numHeroes, heroArray);
                 break;
 
+            //Menu option 2 - delete a hero from the array
             case 2:
-                //deleteHero();
+                numHeroes = deleteHeroes(numHeroes, heroArray);
                 break;
 
+            //Menu option 3 - print hero info
             case 3:
                 printHeroes(numHeroes, heroArray);
                 break;
 
+            //Menu option 4 - print rent details
             case 4:
                 printRentDetails(numHeroes, heroArray);
                 break;
 
+            //Menu option 5 - Exit
             case 5:
+                //File export menu
                 cout << "Would you like to save your superheros list to a file? (y/n) ";
                 cin >> userChar;
                 while(cin.fail() || !( (tolower(userChar) == 'y') || (tolower(userChar) == 'n') )) {
@@ -68,18 +86,26 @@ int main() {
                     cin >> userChar;
                 }
 
+                //Switch statement based off of user's choice
                 switch(tolower(userChar)) {
+                    //Export to file
                     case 'y':
                         saveToFile(numHeroes, heroArray);
                         cout << "Goodbye.\n";
+                        //Memory cleanup
+                        delete [] heroArray;
                         return 0;
                         break;
                     
+                    //Exit program
                     case 'n':
                         cout << "Goodbye.\n";
+                        //Memory cleanup
+                        delete [] heroArray;
                         return 0;
                         break;
 
+                    //Program should never end up here, but in case it does:
                     default:
                         cout << "Error getting user input in second switch statement. Exiting program.\n";
                         return 1;
@@ -87,6 +113,7 @@ int main() {
                 }
                 break;
 
+            //Program should never end up here, but in case it does:
             default:
                 cout << "Error getting user input in 1st switch statement. Exiting program.\n";
                 return 1;
@@ -94,8 +121,9 @@ int main() {
         }
     }
 
-    
+    //main() function should never wind up here, but in case it somehow does:
     delete [] heroArray;
-    return 0;
+    cout << "Error in main loop. Exiting program\n";
+    return 1;
 
 }
