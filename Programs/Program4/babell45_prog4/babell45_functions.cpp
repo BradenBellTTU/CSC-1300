@@ -420,4 +420,5 @@ void printRentDetails(int numHeroes, Heroes* heroArray) {
     //Display totals vars
     cout << line << "\n\n";
     cout << "TOTALS: " << tabs << '$'<< rentTotal << tabs << "$" << damageTotal << '\n';
+
 }
